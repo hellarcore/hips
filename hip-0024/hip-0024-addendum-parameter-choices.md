@@ -26,18 +26,18 @@
 # Abstract
 
 With the upcoming release of Hellar Platform, a higher security model is required for InstantSend
-locks. As such, in [HIP-24](../dip-0024.md), a new quorum renewal mechanism called rotation has been
+locks. As such, in [HIP-24](../hip-0024.md), a new quorum renewal mechanism called rotation has been
 introduced for InstantSend quorums. In this addendum, we will explain the security considerations
-behind [HIP-24](../dip-0024.md) in more detail.
+behind [HIP-24](../hip-0024.md) in more detail.
 
 # Prior work
 
 * [HIP-0006: Long-Living Masternode
-  Quorums](https://github.com/hellarcore/dips/blob/master/dip-0006.md)
-* [HIP-0008: ChainLocks](https://github.com/hellarcore/dips/blob/master/dip-0008.md)
-* [HIP-0010: LLMQ InstantSend](https://github.com/hellarcore/dips/blob/master/dip-0010.md)
+  Quorums](https://github.com/hellarcore/hips/blob/master/hip-0006.md)
+* [HIP-0008: ChainLocks](https://github.com/hellarcore/hips/blob/master/hip-0008.md)
+* [HIP-0010: LLMQ InstantSend](https://github.com/hellarcore/hips/blob/master/hip-0010.md)
 * [HIP-0024: Long-Living Masternode Quorum Distribution and
-  Rotation](https://github.com/hellarcore/dips/blob/master/dip-0024.md)
+  Rotation](https://github.com/hellarcore/hips/blob/master/hip-0024.md)
 
 # Structure of the document
 
@@ -50,14 +50,14 @@ better understanding the design choices.
 
 ## Overview of mining attacks
 
-[HIP-24](../dip-0024.md) considers attacks that we name _double sign attacks_. Therein it is assumed
+[HIP-24](../hip-0024.md) considers attacks that we name _double sign attacks_. Therein it is assumed
 that attackers have a certain number of nodes in the quorum without evaluating the actual difficulty
 of introducing this number of byzantine nodes into the quorum. This introduction of byzantine nodes
 is done through what we call mining attacks. We will present a probability model for this creation
 of bias because the success rate is the relevant parameter for mining attacks.
 
 For clarity, it is critical to recognize the difference between the _double sign attacks_ presented
-in [HIP-24](../dip-0024.md) and _mining attacks_ which we describe in greater detail in that
+in [HIP-24](../hip-0024.md) and _mining attacks_ which we describe in greater detail in that
 document. Mining attacks serve _only_ to sway the random distribution of nodes in the system and
 artificially render edge cases of the distribution more likely. Consequently, a realized atypical
 distribution would enable _double sign attacks_ by giving would-be attackers the majority of nodes
@@ -69,7 +69,7 @@ a single targeted quorum. The attack consists of finding valid hashes quickly an
 not providing enough byzantine entries to gain control of the targeted quorum.
 
 Here and in the following sections, _taking control_ means being able to perform a double sign as
-presented in [HIP-24](../dip-0024.md). Otherwise, the same reasoning holds, and the logic of the
+presented in [HIP-24](../hip-0024.md). Otherwise, the same reasoning holds, and the logic of the
 calculations remains identical for taking total control of a quorum (the attacker would then be able
 to sign messages of any kind with the quorum). Instead of considering the _Double Sign Threshold_
 (DST), one would simply consider the usual threshold.
@@ -116,7 +116,7 @@ In this document, we make the following security consideration:
 
 ## Double Signing Threshold
 
-As presented in [HIP-24](../dip-0024.md), the _Double Sign Threshold_ (DST) is the percentage of the
+As presented in [HIP-24](../hip-0024.md), the _Double Sign Threshold_ (DST) is the percentage of the
 quorum an attacker must control to sign _correct_ but _contradictory_ locks while under assumption
 3. This percentage is lower than the actual quorum threshold.
 
@@ -285,7 +285,7 @@ $$P(control)=\sum_{x_1+x_2+x_3\geq T} P(X_1=x_1)*P(X_2=x_2)*P(X_3=x_3)$$
 
 Note: each experiment depends on the previous ones, so while the calculations are correct, this
 notation is technically not proper. This is because this document is not, per se, a mathematical
-paper; its goal is to explain the logic behind [HIP-24](../dip-0024.md) choices to a broader
+paper; its goal is to explain the logic behind [HIP-24](../hip-0024.md) choices to a broader
 audience.
 
 To calculate this sum, we need to calculate $P(X_i=x_i)$. $X_i$ is a repetition of $hp$ times the
@@ -334,7 +334,7 @@ required for the calculations.
    lists. This is because the selection algorithm goes through the unused nodes first. To deviate
    from the average cases, a hash should contain more byzantine nodes in the targeted quorum while
    having as few nodes as possible in other quorums. Thus the byzantine nodes will be found in the
-   first part of the sorted list during the selection phase presented in [HIP-24](../dip-0024.md).
+   first part of the sorted list during the selection phase presented in [HIP-24](../hip-0024.md).
 2. An adversary could also try to spread their hash power over multiple less efficient attacks;
    however, this is less likely to succeed and thus not optimal for an attacker.
 3. Each valid hash determines the composition of QuorumNumber quorum shares. These are **not**
@@ -447,7 +447,7 @@ much lower hash power is required.
 
 # Conclusion
 
-Before the changes introduced in [HIP-24](../dip-0024.md), an attacker could make an InstantSend
+Before the changes introduced in [HIP-24](../hip-0024.md), an attacker could make an InstantSend
 quorum sign contradictory locks with a well-timed attack.
 
 Now the attacker must also own, on average, 25% of all the masternodes in the system to be
@@ -468,7 +468,7 @@ As a final summary, the protection levels are as of now:
 
 \* Updates should increase this value significantly in the near future
 
-\** But pointless, as stated in [HIP-24](../dip-0024.md). It would only create concurrency between
+\** But pointless, as stated in [HIP-24](../hip-0024.md). It would only create concurrency between
 ChainLocks. Moreover, there is a low incentive as consecutive inconsistent ChainLocks would probably
 devalue the HELLAR collaterals too much to render a few double-spend transactions worthwhile.
 

@@ -1,5 +1,5 @@
 These are the currently supported LLMQ and DKG types. Each row is a single type. Each column refers to a parameter found
-in [Parameters/Variables of a LLMQ and DKG](../dip-0006.md#parametersvariables-of-a-llmq-and-dkg).
+in [Parameters/Variables of a LLMQ and DKG](../hip-0006.md#parametersvariables-of-a-llmq-and-dkg).
 
 | name | quorumType | quorumSize | quorumMinSize | quorumThreshold | quorumDkgInterval | quorumDkgPhaseBlocks | quorumDkgBadVotesThreshold | quorumSigningActiveQuorumCount | Notes |
 |--|--|--|--|--|--|--|--|--|--|
