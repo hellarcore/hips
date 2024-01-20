@@ -191,4 +191,4 @@ The following matrix demonstrates how behavior is evaluated at each phase leadin
 
 ## Copyright
 
-Copyright (c) 2018 Hellar Core Team. [Licensed under the MIT License](https://opensource.org/licenses/MIT)
+Copyright (c) 2024 Hellar Core Team. [Licensed under the MIT License](https://opensource.org/licenses/MIT)
